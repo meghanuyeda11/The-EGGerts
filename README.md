@@ -1,1 +1,1 @@
-# Wordle++
+# Wordle - UCLA Edition
