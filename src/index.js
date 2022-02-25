@@ -27,8 +27,8 @@ class Board extends React.Component {
         <div className="status">{status}</div>
         <div className="button-panel">
           <button>instructions</button>
-          <button>leaderboard</button>
           <button>logout</button>
+          <button>update leaderboard</button>
         </div>
         <div className="board-row">
           {this.renderSquare(0)}
