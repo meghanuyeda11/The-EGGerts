@@ -84,9 +84,20 @@ class Game extends React.Component {
         <div className="game-board">
           <Board />
         </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+        <div className="game-leaderboard">
+          <div>{"Leaderboard:"}</div>
+          <ol>
+            <li>Insert #1</li>
+            <li>Insert #2</li>
+            <li>Insert #3</li>
+            <li>Insert #4</li>
+            <li>Insert #5</li>
+            <li>Insert #6</li>
+            <li>Insert #7</li>
+            <li>Insert #8</li>
+            <li>Insert #9</li>
+            <li>Insert #10</li>
+          </ol>
         </div>
       </div>
     );

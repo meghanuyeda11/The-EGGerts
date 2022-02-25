@@ -27,7 +27,7 @@ div {
 
 .status {
   margin-bottom: 10px;
-  font: 40px "Monaco", monospace;
+  font: 40px "Chalkduster", monospace;
 }
 
 .button-panel {
@@ -63,8 +63,11 @@ div {
   flex-direction: row;
 }
 
-.game-info {
-  margin-left: 20px;
+.game-leaderboard {
+  margin-top: 100px;
+  margin-left: 75px;
+  text-align: left;
+  font: 20px "Apple Chancery", Futura, sans-serif;
 }
 
 .incorrect {
