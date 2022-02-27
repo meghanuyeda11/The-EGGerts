@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Login from './components/login'
+import { useState, useEffect } from 'react';
 
 class Square extends React.Component {
   render() {
@@ -77,31 +77,39 @@ class Board extends React.Component {
   }
 }
 
-class Game extends React.Component {
-  render() {
-    return (
-      <div className="game">
+function Game() {
+  const [loginPopup, setLoginPopup] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoginPopup(true);
+    }, 1000);
+  }, []);
+
+  return(
+    <div className="game">
         <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-leaderboard">
-          <div>{"Leaderboard:"}</div>
-          <ol>
-            <li>Insert #1</li>
-            <li>Insert #2</li>
-            <li>Insert #3</li>
-            <li>Insert #4</li>
-            <li>Insert #5</li>
-            <li>Insert #6</li>
-            <li>Insert #7</li>
-            <li>Insert #8</li>
-            <li>Insert #9</li>
-            <li>Insert #10</li>
-          </ol>
-        </div>
-      </div>
-    );
-  }
+           <Board />
+         </div>
+         <div className="game-leaderboard">
+           <div>{"Leaderboard:"}</div>
+           <ol>
+             <li>Insert #1</li>
+             <li>Insert #2</li>
+             <li>Insert #3</li>
+             <li>Insert #4</li>
+             <li>Insert #5</li>
+             <li>Insert #6</li>
+             <li>Insert #7</li>
+             <li>Insert #8</li>
+             <li>Insert #9</li>
+             <li>Insert #10</li>
+           </ol>
+         </div>
+        <Login trigger={loginPopup} setTrigger={setLoginPopup}>
+        </Login>
+       </div>
+    
+  )
 }
 
 // ========================================
