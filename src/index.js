@@ -5,10 +5,25 @@ import Login from './components/login'
 import useLogin from './components/useLogin';
 
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+      typed: false
+    }
+    this.enterCharacter = this.enterCharacter.bind(this);
+  }
+
+  enterCharacter(event) {
+    if (!this.state.typed) { // if haven't typed
+      this.setState({value: event.key.toUpperCase(), typed: true});
+    }
+  }
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      <button className="square" onKeyPress={this.enterCharacter}>
+        {this.state.value}
       </button>
     );
   }
@@ -16,7 +31,8 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square 
+    />;
   }
 
   render() {
@@ -108,6 +124,7 @@ function Game() {
     
   )
 }
+
 
 // ========================================
 
