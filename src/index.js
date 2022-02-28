@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login'
-import { useState, useEffect } from 'react';
+import useLogin from './components/useLogin';
 
 class Square extends React.Component {
   render() {
@@ -78,12 +78,11 @@ class Board extends React.Component {
 }
 
 function Game() {
-  const [loginPopup, setLoginPopup] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoginPopup(true);
-    }, 1000);
-  }, []);
+  const { login, setLogin } = useLogin();
+  
+  if(!login) {
+    return <Login setLogin={setLogin} />
+  }
 
   return(
     <div className="game">
@@ -105,8 +104,6 @@ function Game() {
              <li>Insert #10</li>
            </ol>
          </div>
-        <Login trigger={loginPopup} setTrigger={setLoginPopup}>
-        </Login>
        </div>
     
   )
