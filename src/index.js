@@ -9,12 +9,6 @@ class Square extends React.Component {
     super(props);
   }
 
-  clearCharacter() {
-    if (!this.state.typed) { // if haven't typed
-      this.setState({value: "", typed: false});
-    }
-  }
-
   render() {
     return (
       <button className="square">
@@ -216,7 +210,6 @@ function closeModal(modal) {
   modal.classList.remove('active')
   overlay.classList.remove('active')
 }
-
 // This is where the working instruction button ends
 
 
