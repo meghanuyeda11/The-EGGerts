@@ -4,6 +4,9 @@ import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
 
+var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
+var answer = "bruin"; //where we will store our answer string for the day
+var canMoveOn = false;  //says if the next row is typeable
 class Square extends React.Component {
   constructor(props) {
     super(props);
@@ -27,23 +30,23 @@ class Board extends React.Component {
     this.state = {
       currentCell: 0,
       currentRow: 1,
-      cellVals: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-      "", "", "", "", "", "", "", "", "", ""]
+      cellVals: ["", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "",
+      "", "", "", "", "", "", "", "", "", ""],
+      cellColors: ["#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec","#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec",
+      "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec"]
     };
   }
 
   enterCharacter(event) { // new css focus class
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
-        var wordExists = true; // replace with function call
-        if (wordExists) { // word exists
-          
-          // check for correctness, otherwise cont.
-          
-          // change colors of current row
-
-
-          this.setState({currentRow: this.state.currentRow+1}); // increment the row
+        this.checkWord();
+        this.changeBGColor();
+        if (canMoveOn) {
+          this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
+          canMoveOn = false;
+        } else {
+          this.setState({currentRow: this.state.currentRow, currentCell: this.state.currentCell});
         }
       }
     } else if (event.key === 'Backspace') {
@@ -56,6 +59,83 @@ class Board extends React.Component {
       }
     }
   }
+
+  createString(){ //this takes the square inputs stored in cellVals into a string
+    var string = "";
+    for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
+      string = string + this.state.cellVals[i];
+    }
+    return string.toLowerCase();
+  }
+
+  changeBGColor() { //this changes the squares' colors
+    var cols = document.getElementsByClassName('square');
+    for(let i = 0; i < cols.length; i++) {
+      cols[i].style.backgroundColor = this.state.cellColors[i];
+    }
+  }
+
+  answerMessage() {
+    if(this.state.currentRow == 1) {
+      alert("Cancel your imposter syndrome, you're a genius")
+    } else if (this.state.currentRow == 2) {
+      alert("Weeder classes don't even phase you")
+    } else if (this.state.currentRow == 3) {
+      alert("Curve setter *eye rolls*")
+    } else if (this.state.currentRow == 4) {
+      alert("You skipped your writing 1 credit, didn't you #smarty")
+    } else if (this.state.currentRow == 5) {
+      alert("Don't worry, you'll benefit from the curve")
+    } else {
+      alert("That was close, you were almost as big of a loser as USC students")
+    }
+  }
+
+  checkWord() {
+    var currentWord = this.createString();
+    // alert(currentWord);
+    if(currentWord == answer) {
+      //have every square turn blue
+      //figuring out how to know what squares need to turn
+      const newColors = this.state.cellColors.slice();
+      for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
+        newColors[i] = "#2774AE";
+        this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});        
+      }
+
+      //return a yay message or something
+      this.answerMessage();
+
+      //update scoreboard and server
+
+    } else {
+      if (textByLine.includes(currentWord)) {
+        // alert("In dict!");
+        //have squares turn blue, yellow, or red
+        const newColors = this.state.cellColors.slice();
+        for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
+          let j = i % 5;
+          if (currentWord.charAt(j) === answer.charAt(j)) {
+            //turn blue
+            newColors[i] = "#2774AE";
+            this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1 , cellColors: newColors});
+          } else if (answer.includes(currentWord.charAt(j))) {
+            //turn yellow
+            newColors[i] = "#FFD100";
+            this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});
+          } else {
+            //turn red
+            newColors[i] = "#990000";
+            this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});
+          }
+        }
+        canMoveOn = true;
+      } else {
+        //throw up error message 
+        alert("Did you actually think that was a word?");
+      }
+    }
+  } 
 
   delCharacter() {
     if (this.state.currentCell > (this.state.currentRow*5)-5) { // past or at beginning of row
