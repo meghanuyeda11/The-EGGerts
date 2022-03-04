@@ -17,8 +17,6 @@ function getRandomInt(max) {
 }
 
 var answer = UCLAWords[getRandomInt(72)];
-// var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
-//var answer = "bruin"; //where we will store our answer string for the day
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -173,7 +171,6 @@ class Board extends React.Component {
       <div tabIndex="0" ref={this.focusRef} onKeyDown={this.enterCharacter}> 
         <div className="status"><h1>{status}</h1></div>
         <div className="button-panel">
-          <button className="instructions">instructions</button>
           <button className="logout">logout</button>
           <button className="refresh">update leaderboard</button>
         </div>
