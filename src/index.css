@@ -15,6 +15,12 @@ div {
   border-spacing: 0 5px;
   justify-content: center;
 }
+.button-panel {
+  position: absolute;
+  bottom: 60px;
+  /* padding-bottom: 50px; */
+}
+
 
 .board {
   margin:auto;
@@ -62,7 +68,7 @@ div {
 .game-leaderboard {
   position: absolute;
   top: 100px;
-  right: 50px;
+  right: 70px;
   padding: 10px;
   text-align: left;
 }
@@ -87,48 +93,9 @@ div {
   .game-leaderboard { display: none; }
 }
 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out; 
-  border: 1px solid black;
-  border-radius: 10px;
-  z-index: 10;
-  background-color: white;
-  width: 500px;
-  max-width: 80%;
-}
-
-.modal.active {
-   transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-header {
-  padding: 10px 15px; /* padding around header items */
-  display: flex; /* so things in header are side by side */
-  justify-content: space-between; /* space between header items */
-  align-items: center; /* align header  items in the center */
-  border-bottom: 1px solid balck;
-}
-
-.modal-header .title {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.modal-header .close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
 .modal-body {
-  padding: 10px;
+  padding: 20px;
+  text-align: left;
 }
 
 #overlay {
@@ -146,4 +113,4 @@ div {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
-}
+} 
