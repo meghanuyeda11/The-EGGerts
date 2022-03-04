@@ -4,9 +4,22 @@ import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
 
+const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
+'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
+'delta', 'diddy', 'dorms', 'drive', 'eagle', 'eight', 'field', 'fight', 'fight', 'final', 'flyer', 'frats', 'gains', 'games', 'gamma',
+'geeks', 'halls', 'hills', 'hitch', 'homes', 'ipads', 'jamba', 'kappa', 'masks', 'night', 'notes', 'omega', 'party', 'phone', 'pizza',
+'plate', 'poker', 'rocco', 'royce', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'table', 'theta',
+'undie', 'venmo', 'vista', 'white', 'yerba', 'zelle'];
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+var answer = UCLAWords[getRandomInt(72)];
 var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
-var answer = "bruin"; //where we will store our answer string for the day
+//var answer = "bruin"; //where we will store our answer string for the day
 var canMoveOn = false;  //says if the next row is typeable
+
 class Square extends React.Component {
   constructor(props) {
     super(props);
