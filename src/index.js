@@ -55,7 +55,6 @@ class Board extends React.Component {
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
         this.checkWord();
-        this.changeBGColor();
         if (canMoveOn) {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
@@ -72,6 +71,7 @@ class Board extends React.Component {
         this.setState({cellVals: newVals, currentCell: this.state.currentCell+1});
       }
     }
+    this.changeBGColor();
   }
 
   createString(){ //this takes the square inputs stored in cellVals into a string
@@ -90,6 +90,7 @@ class Board extends React.Component {
   }
 
   answerMessage() {
+    this.changeBGColor();
     if(this.state.currentRow == 1) {
       alert("Did you Chegg that?") //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
