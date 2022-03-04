@@ -4,6 +4,19 @@ import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
 
+const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
+'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
+'delta', 'diddy', 'dorms', 'drive', 'eagle', 'eight', 'field', 'fight', 'fight', 'final', 'flyer', 'frats', 'gains', 'games', 'gamma',
+'geeks', 'halls', 'hills', 'hitch', 'homes', 'ipads', 'jamba', 'kappa', 'masks', 'night', 'notes', 'omega', 'party', 'phone', 'pizza',
+'plate', 'poker', 'powel', 'rocco', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'table', 'theta',
+'undie', 'venmo', 'vista', 'white', 'yerba', 'zelle']
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+answer = UCLAWords[getRandomInt(72)]
+
 class Square extends React.Component {
   constructor(props) {
     super(props);
