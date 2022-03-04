@@ -49,7 +49,7 @@ class Board extends React.Component {
     };
   }
 
-  enterCharacter(event) { // new css focus class
+  enterCharacter(event) { 
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
         this.checkWord();
@@ -62,6 +62,9 @@ class Board extends React.Component {
       }
     } else if (event.key === 'Backspace') {
       this.delCharacter();
+    } else if (event.keyCode < 65 || event.keyCode > 90) { // non-alpha
+      alert("Invalid character entered")
+      return
     } else { // insert character into tile
       if (this.state.currentCell < (this.state.currentRow*5)) {
         const newVals = this.state.cellVals.slice(); // copy the array
@@ -225,11 +228,12 @@ class Board extends React.Component {
 }
 
 function Game() {
+  /*
   const { login, setLogin } = useLogin();
   
   if(!login) {
     return <Login setLogin={setLogin} />
-  }
+  }*/
 
   return(
     <div className="game">
