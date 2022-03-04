@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
-import { allWords } from '/Users/meghanuyeda/The-EGGerts/src/AllWords.js'
+import { allWords } from './AllWords.js'
 
 const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
 'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
