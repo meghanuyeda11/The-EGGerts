@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
-import { allWords } from '/Users/meghanuyeda/The-EGGerts/src/AllWords.js'
+import { allWords } from './AllWords.js'
 
 const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
 'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
@@ -17,8 +17,6 @@ function getRandomInt(max) {
 }
 
 var answer = UCLAWords[getRandomInt(72)];
-// var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
-//var answer = "bruin"; //where we will store our answer string for the day
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -173,7 +171,6 @@ class Board extends React.Component {
       <div tabIndex="0" ref={this.focusRef} onKeyDown={this.enterCharacter}> 
         <div className="status"><h1>{status}</h1></div>
         <div className="button-panel">
-          <button className="instructions">instructions</button>
           <button className="logout">logout</button>
           <button className="refresh">update leaderboard</button>
         </div>
