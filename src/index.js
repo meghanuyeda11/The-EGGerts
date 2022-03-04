@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
+import { allWords } from '/Users/meghanuyeda/The-EGGerts/src/AllWords.js'
 
 const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
 'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
@@ -16,7 +17,7 @@ function getRandomInt(max) {
 }
 
 var answer = UCLAWords[getRandomInt(72)];
-var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
+// var textByLine = ["moons", "stars", "broom", "brisk"]; //makeshift dictionary
 //var answer = "bruin"; //where we will store our answer string for the day
 var canMoveOn = false;  //says if the next row is typeable
 
@@ -90,7 +91,7 @@ class Board extends React.Component {
 
   answerMessage() {
     if(this.state.currentRow == 1) {
-      alert("Cancel your imposter syndrome, you're a genius")
+      alert("Did you Chegg that?") //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
       alert("Weeder classes don't even phase you")
     } else if (this.state.currentRow == 3) {
@@ -122,7 +123,7 @@ class Board extends React.Component {
       //update scoreboard and server
 
     } else {
-      if (textByLine.includes(currentWord)) {
+      if (allWords.includes(currentWord)) {
         // alert("In dict!");
         //have squares turn blue, yellow, or red
         const newColors = this.state.cellColors.slice();
