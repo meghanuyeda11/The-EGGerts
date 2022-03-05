@@ -7,18 +7,18 @@ import { allWords } from './AllWords.js'
 import Instructions from './components/instructions';
 import { useState } from 'react';
 
-const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
-'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
-'delta', 'diddy', 'dorms', 'drive', 'eagle', 'eight', 'field', 'fight', 'fight', 'final', 'flyer', 'frats', 'gains', 'games', 'gamma',
-'geeks', 'halls', 'hills', 'hitch', 'homes', 'ipads', 'jamba', 'kappa', 'masks', 'night', 'notes', 'omega', 'party', 'phone', 'pizza',
-'plate', 'poker', 'rocco', 'royce', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'table', 'theta',
-'undie', 'venmo', 'vista', 'white', 'yerba', 'zelle'];
+const UCLAWords = ['adult', 'alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block', 'books', 'brick', 'bruin',
+'carey', 'cedar', 'chess', 'claps', 'class', 'clock', 'clubs', 'court', 'covid', 'david', 'delta', 'diddy', 'dorms', 'drake', 'drive', 'drugs', 'duffl',
+'emacs', 'field', 'fight', 'final', 'flyer', 'frats', 'games', 'gamma', 'geeks', 'grade', 'halls', 'hills', 'hitch', 'house', 'ipads',
+'janss', 'kappa', 'learn', 'major', 'masks', 'nerds', 'notes', 'omega', 'party', 'piano', 'planb', 'plate', 'poker',
+'rende', 'riese', 'rocco', 'rodeo', 'royce', 'rugby', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'theta',
+'undie', 'union', 'venmo', 'vodka', 'vista', 'xcode', 'yells', 'yerba', 'zelle', 'bruin'];
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-var answer = UCLAWords[getRandomInt(72)];
+var answer = UCLAWords[getRandomInt(81)];
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -52,15 +52,15 @@ class Board extends React.Component {
   }
 
   enterCharacter(event) { 
+    this.changeBGColor();
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
         this.checkWord();
         if (canMoveOn) {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
-        } else {
-          this.setState({currentRow: this.state.currentRow, currentCell: this.state.currentCell});
-        }
+          // this.changeBGColor(); // why isn't this updating here
+        } 
       }
     } else if (event.key === 'Backspace') {
       this.delCharacter();
@@ -118,10 +118,10 @@ class Board extends React.Component {
       const newColors = this.state.cellColors.slice();
       for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
         newColors[i] = "#2774AE";
-        this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});        
+        this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});       
       }
 
-      //return a yay message or something
+      //return a victory message
       this.answerMessage();
 
       //update scoreboard and server

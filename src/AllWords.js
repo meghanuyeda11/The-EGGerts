@@ -1,4 +1,10 @@
 export const allWords = [
+  'adult', 'alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block', 'books', 'brick', 'bruin',
+  'carey', 'cedar', 'chess', 'claps', 'class', 'clock', 'clubs', 'court', 'covid', 'david', 'delta', 'diddy', 'dorms', 'drake', 'drive', 'drugs', 'duffl',
+  'emacs', 'field', 'fight', 'final', 'flyer', 'frats', 'games', 'gamma', 'geeks', 'grade', 'halls', 'hills', 'hitch', 'house', 'ipads',
+  'janss', 'kappa', 'learn', 'major', 'masks', 'nerds', 'notes', 'omega', 'party', 'piano', 'planb', 'plate', 'poker',
+  'rende', 'riese', 'rocco', 'rodeo', 'royce', 'rugby', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'theta',
+  'undie', 'union', 'venmo', 'vodka', 'vista', 'xcode', 'yells', 'yerba', 'zelle',
   'aahed',
   'aalii',
   'aargh',
