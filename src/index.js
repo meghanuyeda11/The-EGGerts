@@ -7,7 +7,7 @@ import { allWords } from './AllWords.js'
 import Instructions from './components/instructions';
 import { useState } from 'react';
 
-const UCLAWords = ['adult', 'alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block', 'books', 'brick', 'bruin',
+const UCLAWords = ['alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block', 'books', 'brick', 'bruin',
 'carey', 'cedar', 'chess', 'claps', 'class', 'clock', 'clubs', 'court', 'covid', 'david', 'delta', 'diddy', 'dorms', 'drake', 'drive', 'drugs', 'duffl',
 'emacs', 'field', 'fight', 'final', 'flyer', 'frats', 'games', 'gamma', 'geeks', 'grade', 'halls', 'hills', 'hitch', 'house', 'ipads',
 'janss', 'kappa', 'learn', 'major', 'masks', 'nerds', 'notes', 'omega', 'party', 'piano', 'planb', 'plate', 'poker',
@@ -18,7 +18,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-var answer = UCLAWords[getRandomInt(81)];
+var answer = UCLAWords[getRandomInt(80)];
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
