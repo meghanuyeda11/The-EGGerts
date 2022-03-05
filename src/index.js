@@ -4,6 +4,8 @@ import './index.css';
 import Login from './components/login'
 import useLogin from './components/useLogin';
 import { allWords } from './AllWords.js'
+import Instructions from './components/instructions';
+import { useState } from 'react';
 
 const UCLAWords = ['adult', 'alpha', 'andre', 'bells', 'bikes', 'birds', 'black', 'block', 
 'books', 'brick', 'bruin', 'burns','calve', 'carey', 'chair', 'chess', 'claps', 'clock', 'court', 'covid', 'david',
@@ -45,7 +47,7 @@ class Board extends React.Component {
       cellVals: ["", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", ""],
       cellColors: ["#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec","#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec",
-      "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec"]
+      "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec"],        
     };
   }
 
@@ -174,10 +176,7 @@ class Board extends React.Component {
     return (
       <div tabIndex="0" ref={this.focusRef} onKeyDown={this.enterCharacter}> 
         <div className="status"><h1>{status}</h1></div>
-        <div className="button-panel">
-          <button className="logout">logout</button>
-          <button className="refresh">update leaderboard</button>
-        </div>
+        
         <div className="board">
           <div className="board-row">
           <Square tileContent={this.state.cellVals[0]}/>
@@ -228,18 +227,37 @@ class Board extends React.Component {
 }
 
 function Game() {
-  /*
-  const { login, setLogin } = useLogin();
   
-  if(!login) {
-    return <Login setLogin={setLogin} />
-  }*/
+  // const { login, setLogin } = useLogin();
+  
+  // if(!login) {
+  //   return <Login setLogin={setLogin} />
+  // }
+  const [instructions, setInstructions] = useState(false);
 
   return(
     <div className="game">
         <div className="game-board">
            <Board />
          </div>
+         <div className="button-panel">
+          <button onClick={() => setInstructions(true)}>instructions</button>
+          <Instructions trigger={instructions} setTrigger={setInstructions}>
+          <div class="modal-body">
+              Fill in a row with a five letter word, then press "Enter". 
+              If that word is found in our dictionary: 
+              <p/>(1) the background of the letters within the correct word & in the right position of the word will be UCLA Blue, 
+              <p/>(2) the background of the letters within the correct word but not in the correct position will be UCLA Gold, 
+              <p/>(3) the remaining backgrounds will be USC Red. 
+              <p/>The goal of the game is to get the all backgrounds to be UCLA Blue 
+              (meaning you have guessed the correct word). 
+              <p/>Good luck!! :)
+            </div>
+          </Instructions>
+          <button className="logout">logout</button>
+          <button className="refresh">update leaderboard</button>
+        </div>
+         
          <div className="game-leaderboard">
            <div>{"Leaderboard:"}</div>
            <ol>
@@ -267,45 +285,5 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
-
-// This is where the working instruction button begins
-
-const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
-
-openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = document.querySelector(button.dataset.modalTarget)
-    openModal(modal)
-  })
-})
-
-overlay.addEventListener('click', () => {
-  const modals = document.querySelectorAll('.modal.active')
-  modals.forEach(modal => {
-    closeModal(modal)
-  })
-})
-
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal')
-    closeModal(modal)
-  })
-})
-
-function openModal(modal) {
-  if (modal == null ) return
-  modal.classList.add('active')
-  overlay.classList.add('active')
-}
-
-function closeModal(modal) {
-  if (modal == null ) return
-  modal.classList.remove('active')
-  overlay.classList.remove('active')
-}
-// This is where the working instruction button ends
 
 
