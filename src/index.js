@@ -20,8 +20,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-var answer = UCLAWords[getRandomInt(80)];
-//var answer = "risks";
+var answer = "UCLAWords[getRandomInt(80)]";
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -143,15 +142,21 @@ class Board extends React.Component {
         // alert("In dict!");
         //have squares turn blue, yellow, or red
         const newColors = this.state.cellColors.slice();
+        var tempAns = answer;
+
         for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
           let j = i % 5;
           if (currentWord.charAt(j) === answer.charAt(j)) {
             //turn blue
             newColors[i] = "#2774AE";
+            let index = tempAns.indexOf(currentWord.charAt(j));
+            tempAns = tempAns.substring(0, index) + tempAns.substring(index + 1);
             this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1 , cellColors: newColors});
-          } else if (answer.includes(currentWord.charAt(j))) {
+          } else if (tempAns.includes(currentWord.charAt(j))) {
             //turn yellow
             newColors[i] = "#FFD100";
+            let index = tempAns.indexOf(currentWord.charAt(j));
+            tempAns = tempAns.substring(0, index) + tempAns.substring(index + 1);
             this.setState({cellVals: this.state.cellVals, currentCell: this.state.currentCell-1, cellColors: newColors});
           } else {
             //turn red
@@ -191,11 +196,11 @@ class Board extends React.Component {
         
         <div className="board">
           <div className="board-row">
-          <Square tileContent={this.state.cellVals[0]}/>
-          <Square tileContent={this.state.cellVals[1]}/>
-          <Square tileContent={this.state.cellVals[2]}/>
-          <Square tileContent={this.state.cellVals[3]}/>
-          <Square tileContent={this.state.cellVals[4]}/>
+            <Square tileContent={this.state.cellVals[0]}/>
+            <Square tileContent={this.state.cellVals[1]}/>
+            <Square tileContent={this.state.cellVals[2]}/>
+            <Square tileContent={this.state.cellVals[3]}/>
+            <Square tileContent={this.state.cellVals[4]}/>
           </div>
           <div className="board-row">
             <Square tileContent={this.state.cellVals[5]}/>
