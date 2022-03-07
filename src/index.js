@@ -260,8 +260,7 @@ function Game() {
     <div className="game">
         <div className="game-board">
            <Board />
-         </div>
-         <div className="button-panel">
+           <div className="button-panel">
           <button onClick={() => setInstructions(true)}>instructions</button>
           <Instructions trigger={instructions} setTrigger={setInstructions}>
           <div class="modal-body">
@@ -278,7 +277,8 @@ function Game() {
           <button onClick={clearAll} className="logout">logout</button>
           <button className="refresh">update leaderboard</button>
         </div>
-         
+         </div>
+
          <div className="game-leaderboard">
            <div>{"Leaderboard:"}</div>
            <ol>
