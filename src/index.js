@@ -68,11 +68,15 @@ class Board extends React.Component {
           canMoveOn = false;
           // this.changeBGColor(); // why isn't this updating here
         } 
+        
+        if(this.state.currentCell == 30) {
+          alert("The word was " + answer + ". Your mom should've used a Trojan.");
+        } 
       }
     } else if (event.key === 'Backspace') {
       this.delCharacter();
     } else if (event.keyCode < 65 || event.keyCode > 90) { // non-alpha
-      alert("Invalid character entered")
+      alert("Invalid character entered");
       return
     } else { // insert character into tile
       if (this.state.currentCell < (this.state.currentRow*5)) {
@@ -103,17 +107,17 @@ class Board extends React.Component {
     gameIsDone = true;
     this.changeBGColor();
     if(this.state.currentRow == 1) {
-      alert("Did you Chegg that?") //Cancel your imposter syndrome, you're a genius
+      alert("Did you Chegg that? Answer: " + answer); //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
-      alert("Weeder classes don't even phase you")
+      alert("Weeder classes don't even phase you Answer: " + answer); 
     } else if (this.state.currentRow == 3) {
-      alert("Curve setter *eye rolls*")
+      alert("Curve setter *eye rolls* Answer: " + answer);
     } else if (this.state.currentRow == 4) {
-      alert("You skipped your writing 1 credit, didn't you #smarty")
+      alert("You skipped your writing 1 credit, didn't you #smarty. Answer: " + answer);
     } else if (this.state.currentRow == 5) {
-      alert("Don't worry, you'll benefit from the curve")
+      alert("Don't worry, you'll benefit from the curve. Answer: " + answer);
     } else {
-      alert("That was close, you were almost as big of a loser as USC students")
+      alert("That was close, you were almost as big of a loser as USC students. Answer: " + answer);
     }
   }
 
