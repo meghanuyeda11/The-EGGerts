@@ -238,14 +238,18 @@ class Board extends React.Component {
   }
 }
 
+function clearAll() {
+  window.sessionStorage.clear();
+  alert("you've been logged out! please refresh the page")
+}
+
 function Game() {
-  
-  // const { login, setLogin } = useLogin();
-  
-  // if(!login) {
-  //   return <Login setLogin={setLogin} />
-  // }
+  const { login, setLogin } = useLogin(false);
   const [instructions, setInstructions] = useState(false);
+
+  if(!login) {
+    return <Login setLogin={setLogin} />
+  }
 
   return(
     <div className="game">
@@ -266,7 +270,7 @@ function Game() {
               <p/>Good luck!! :)
             </div>
           </Instructions>
-          <button className="logout">logout</button>
+          <button onClick={clearAll} className="logout">logout</button>
           <button className="refresh">update leaderboard</button>
         </div>
          
