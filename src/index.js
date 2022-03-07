@@ -14,11 +14,14 @@ const UCLAWords = ['alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block'
 'rende', 'riese', 'rocco', 'rodeo', 'royce', 'rugby', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'theta',
 'undie', 'union', 'venmo', 'vodka', 'vista', 'xcode', 'yells', 'yerba', 'zelle', 'bruin'];
 
+var gameIsDone = false;
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 var answer = UCLAWords[getRandomInt(80)];
+//var answer = "risks";
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -52,6 +55,10 @@ class Board extends React.Component {
   }
 
   enterCharacter(event) { 
+    if (gameIsDone) {
+      this.changeBGColor()
+      return;
+    }
     this.changeBGColor();
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
@@ -93,6 +100,7 @@ class Board extends React.Component {
   }
 
   answerMessage() {
+    gameIsDone = true;
     this.changeBGColor();
     if(this.state.currentRow == 1) {
       alert("Did you Chegg that?") //Cancel your imposter syndrome, you're a genius
