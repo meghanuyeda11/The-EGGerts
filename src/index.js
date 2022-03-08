@@ -107,17 +107,17 @@ class Board extends React.Component {
     gameIsDone = true;
     this.changeBGColor();
     if(this.state.currentRow == 1) {
-      alert("Did you Chegg that? Answer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
+      alert("Did you Chegg that?\nAnswer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
-      alert("Weeder classes don't even phase you Answer: " + answer + "\nRefresh your page to play again."); 
+      alert("Weeder classes don't even phase you\nAnswer: " + answer + "\nRefresh your page to play again."); 
     } else if (this.state.currentRow == 3) {
-      alert("Curve setter *eye rolls* Answer: " + answer + "\nRefresh your page to play again.");
+      alert("Curve setter *eye rolls*\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else if (this.state.currentRow == 4) {
-      alert("You skipped your writing 1 credit, didn't you #smarty. Answer: " + answer + "\nRefresh your page to play again.");
+      alert("You skipped your writing 1 credit, didn't you #smarty.\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else if (this.state.currentRow == 5) {
-      alert("Don't worry, you'll benefit from the curve. Answer: " + answer + "\nRefresh your page to play again.");
+      alert("Don't worry, you'll benefit from the curve.\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else {
-      alert("That was close, you were almost as big of a loser as USC students. Answer: " + answer + "\nRefresh your page to play again.");
+      alert("That was close, you were almost as big of a loser as USC students.\nAnswer: " + answer + "\nRefresh your page to play again.");
     }
   }
 
