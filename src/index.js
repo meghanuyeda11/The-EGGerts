@@ -109,9 +109,9 @@ class Board extends React.Component {
     gameIsDone = true;
     this.changeBGColor();
     if(this.state.currentRow == 1) {
-      alert("Did you Chegg that?n\Answer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
+      alert("Did you Chegg that?\nAnswer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
-      alert("Weeder classes don't even phase you.\nAnswer: " + answer + "\nRefresh your page to play again."); 
+      alert("Weeder classes don't even phase you\nAnswer: " + answer + "\nRefresh your page to play again."); 
     } else if (this.state.currentRow == 3) {
       alert("Curve setter *eye rolls*\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else if (this.state.currentRow == 4) {
