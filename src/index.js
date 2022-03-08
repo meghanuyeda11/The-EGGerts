@@ -21,7 +21,8 @@ function getRandomInt(max) {
 }
 
 //var answer = UCLAWords[getRandomInt(80)];
-var answer = "alpha"
+var answer = "storm"
+
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -57,7 +58,8 @@ class Board extends React.Component {
 
   enterCharacter(event) { 
     if (gameIsDone) {
-      this.changeBGColor()
+      this.answerMessage();
+      this.changeBGColor();
       return;
     }
     this.changeBGColor();
@@ -68,7 +70,7 @@ class Board extends React.Component {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
           // this.changeBGColor(); // why isn't this updating here
-          if(this.state.currentCell == 30) {
+          if(this.state.currentCell == 30 && !gameIsDone) {
             alert("The word was " + answer + ". Your mom should've used a Trojan.");
           } 
         } 
@@ -107,17 +109,17 @@ class Board extends React.Component {
     gameIsDone = true;
     this.changeBGColor();
     if(this.state.currentRow == 1) {
-      alert("Did you Chegg that? Answer: " + answer); //Cancel your imposter syndrome, you're a genius
+      alert("Did you Chegg that?n\Answer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
-      alert("Weeder classes don't even phase you Answer: " + answer); 
+      alert("Weeder classes don't even phase you.\nAnswer: " + answer + "\nRefresh your page to play again."); 
     } else if (this.state.currentRow == 3) {
-      alert("Curve setter *eye rolls* Answer: " + answer);
+      alert("Curve setter *eye rolls*\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else if (this.state.currentRow == 4) {
-      alert("You skipped your writing 1 credit, didn't you #smarty. Answer: " + answer);
+      alert("You skipped your writing 1 credit, didn't you #smarty.\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else if (this.state.currentRow == 5) {
-      alert("Don't worry, you'll benefit from the curve. Answer: " + answer);
+      alert("Don't worry, you'll benefit from the curve.\nAnswer: " + answer + "\nRefresh your page to play again.");
     } else {
-      alert("That was close, you were almost as big of a loser as USC students. Answer: " + answer);
+      alert("That was close, you were almost as big of a loser as USC students.\nAnswer: " + answer + "\nRefresh your page to play again.");
     }
   }
 
