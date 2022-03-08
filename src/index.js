@@ -20,7 +20,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-var answer = "UCLAWords[getRandomInt(80)]";
+var answer = UCLAWords[getRandomInt(80)];
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
