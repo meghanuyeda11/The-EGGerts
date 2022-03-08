@@ -121,7 +121,6 @@ class Board extends React.Component {
 
   checkWord() {
     var currentWord = this.createString();
-    // alert(currentWord);
     if(currentWord == answer) {
       //have every square turn blue
       //figuring out how to know what squares need to turn
