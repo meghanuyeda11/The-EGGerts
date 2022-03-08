@@ -20,7 +20,8 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-var answer = UCLAWords[getRandomInt(80)];
+// var answer = UCLAWords[getRandomInt(80)];
+var answer = "storm";
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -55,7 +56,8 @@ class Board extends React.Component {
 
   enterCharacter(event) { 
     if (gameIsDone) {
-      this.changeBGColor()
+      this.answerMessage();
+      this.changeBGColor();
       return;
     }
     this.changeBGColor();
@@ -66,7 +68,7 @@ class Board extends React.Component {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
           // this.changeBGColor(); // why isn't this updating here
-          if(this.state.currentCell == 30) {
+          if(this.state.currentCell == 30 && !gameIsDone) {
             alert("The word was " + answer + ". Your mom should've used a Trojan.");
           } 
         } 
