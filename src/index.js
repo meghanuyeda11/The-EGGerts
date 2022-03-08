@@ -20,8 +20,9 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-// var answer = UCLAWords[getRandomInt(80)];
-var answer = "storm";
+//var answer = UCLAWords[getRandomInt(80)];
+var answer = "storm"
+
 var canMoveOn = false;  //says if the next row is typeable
 
 class Square extends React.Component {
@@ -30,6 +31,7 @@ class Square extends React.Component {
   }
 
   render() {
+    var text = sessionStorage.getItem("jeffrey_loewe");
     return (
       <button className="square">
         {this.props.tileContent}
@@ -136,6 +138,11 @@ class Board extends React.Component {
       this.answerMessage();
 
       //update scoreboard and server
+      var currentUsername = localStorage.getItem("currentUser")
+      var currentValue = localStorage.getItem(currentUsername)
+      if (currentValue == -1 || (currentValue > this.state.currentRow)) { // no complete or new high score
+        localStorage.setItem(currentUsername, this.state.currentRow)
+      } 
 
     } else {
       if (allWords.includes(currentWord)) {
@@ -188,8 +195,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Wordle - UCLA Edition';
-             
+    const status = 'Wordle - UCLA Edition';  
     return (
       <div tabIndex="0" ref={this.focusRef} onKeyDown={this.enterCharacter}> 
         <div className="status"><h1>{status}</h1></div>
@@ -248,16 +254,59 @@ function clearAll() {
   alert("you've been logged out! please refresh the page")
 }
 
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ""};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    var username = this.state.value;
+    var bestScore = localStorage.getItem(username);
+    if (bestScore != null && bestScore != 0 && bestScore !== undefined) {
+      console.log(JSON.stringify(bestScore))
+    } else {
+      alert("Not a username!")
+    }
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
 function Game() {
   const { login, setLogin } = useLogin(false);
   const [instructions, setInstructions] = useState(false);
-
+  //const displayUsername = (event) => {
+    //event.preventDefault()
+    //var inputUsername = this.inputNode.value
+    //var text = localStorage.getItem(inputUsername)
+    //console.log(event.target[0].value)
+  //}
   if(!login) {
     return <Login setLogin={setLogin} />
   }
 
   return(
     <div className="game">
+        <NameForm />
         <div className="game-board">
            <Board />
            <div className="button-panel">
