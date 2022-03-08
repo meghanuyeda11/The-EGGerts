@@ -66,10 +66,9 @@ class Board extends React.Component {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
           // this.changeBGColor(); // why isn't this updating here
-        } 
-        
-        if(this.state.currentCell == 30) {
-          alert("The word was " + answer + ". Your mom should've used a Trojan.");
+          if(this.state.currentCell == 30) {
+            alert("The word was " + answer + ". Your mom should've used a Trojan.");
+          } 
         } 
       }
     } else if (event.key === 'Backspace') {
