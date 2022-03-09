@@ -57,6 +57,7 @@ class Board extends React.Component {
   enterCharacter(event) { 
     if (gameIsDone) {
       this.answerMessage();
+      this.changeBGColor();
       return;
     }
     if (event.key === 'Enter') {
@@ -244,7 +245,7 @@ function clearAll() {
   alert("you've been logged out! please refresh the page")
 }
 
-class NameForm extends React.Component {
+class Username extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: ""};
@@ -262,7 +263,11 @@ class NameForm extends React.Component {
     var username = this.state.value;
     var bestScore = localStorage.getItem(username);
     if (bestScore != null && bestScore != 0 && bestScore !== undefined) {
-      console.log(JSON.stringify(bestScore))
+      if(bestScore == -1) {
+        alert("This user hasn't won any games yet. \nDo you even Wordle bro...")
+      } else {
+        alert(JSON.stringify(bestScore))
+      }
     } else {
       alert("Not a username!")
     }
@@ -309,7 +314,7 @@ function Game() {
           <button onClick={clearAll} className="logout">Logout</button>
          </div>
          </div>
-         <div className="userForm"><NameForm /></div>
+         <div className="userForm"><Username /></div>
        </div>
     
   )
