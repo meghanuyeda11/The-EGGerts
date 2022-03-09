@@ -313,8 +313,8 @@ function Game() {
           </Instructions>
           <button onClick={clearAll} className="logout">Logout</button>
          </div>
-         </div>
          <div className="userForm"><NameForm /></div>
+         </div>
        </div>
     
   )
