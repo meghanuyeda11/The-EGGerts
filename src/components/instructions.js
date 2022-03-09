@@ -6,7 +6,7 @@ function Instructions(props) {
         <div className="instructions">
             <div className="instructions-inner">
                 <button className="close-btn" onClick={() => props.setTrigger(false)}>
-                    close
+                    X
                 </button>  
                 { props.children }  
             </div>   
