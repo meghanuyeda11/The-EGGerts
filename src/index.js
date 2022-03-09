@@ -14,16 +14,14 @@ const UCLAWords = ['alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block'
 'rende', 'riese', 'rocco', 'rodeo', 'royce', 'rugby', 'saxon', 'ships', 'sigma', 'snaps', 'sport', 'stair', 'steps', 'stone', 'study', 'theta',
 'undie', 'union', 'venmo', 'vodka', 'vista', 'xcode', 'yells', 'yerba', 'zelle', 'bruin'];
 
-var gameIsDone = false;
-
+//choosing the answer for the game
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-//var answer = UCLAWords[getRandomInt(80)];
-var answer = "storm"
+var answer = UCLAWords[getRandomInt(80)];
 
 var canMoveOn = false;  //says if the next row is typeable
+var gameIsDone = false; //says if the game is over or not
 
 class Square extends React.Component {
   constructor(props) {
@@ -52,24 +50,21 @@ class Board extends React.Component {
       cellVals: ["", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "",
       "", "", "", "", "", "", "", "", "", ""],
       cellColors: ["#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec","#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec",
-      "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec"],        
+      "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec", "#ececec"]     
     };
   }
 
   enterCharacter(event) { 
     if (gameIsDone) {
       this.answerMessage();
-      this.changeBGColor();
       return;
     }
-    this.changeBGColor();
     if (event.key === 'Enter') {
       if (this.state.currentCell == (this.state.currentRow*5)) { // reached end of row
         this.checkWord();
         if (canMoveOn) {
           this.setState({currentRow: this.state.currentRow+1, currentCell: this.state.currentCell});
           canMoveOn = false;
-          // this.changeBGColor(); // why isn't this updating here
           if(this.state.currentCell == 30 && !gameIsDone) {
             alert("The word was " + answer + ". Your mom should've used a Trojan.");
           } 
@@ -107,7 +102,6 @@ class Board extends React.Component {
 
   answerMessage() {
     gameIsDone = true;
-    this.changeBGColor();
     if(this.state.currentRow == 1) {
       alert("Did you Chegg that?\nAnswer: " + answer + "\nRefresh your page to play again."); //Cancel your imposter syndrome, you're a genius
     } else if (this.state.currentRow == 2) {
@@ -126,8 +120,7 @@ class Board extends React.Component {
   checkWord() {
     var currentWord = this.createString();
     if(currentWord == answer) {
-      //have every square turn blue
-      //figuring out how to know what squares need to turn
+      //have every square turn blue since word is completely correct
       const newColors = this.state.cellColors.slice();
       for(let i = this.state.currentCell - 5; i < this.state.currentCell; i++) {
         newColors[i] = "#2774AE";
@@ -146,7 +139,6 @@ class Board extends React.Component {
 
     } else {
       if (allWords.includes(currentWord)) {
-        // alert("In dict!");
         //have squares turn blue, yellow, or red
         const newColors = this.state.cellColors.slice();
         var tempAns = answer;
@@ -173,7 +165,7 @@ class Board extends React.Component {
         }
         canMoveOn = true;
       } else {
-        //throw up error message 
+        //throw up error message for word that is not in dictionary
         alert("Did you actually think that was a word?");
       }
     }
@@ -182,7 +174,6 @@ class Board extends React.Component {
   delCharacter() {
     if (this.state.currentCell > (this.state.currentRow*5)-5) { // past or at beginning of row
       const newVals = this.state.cellVals.slice(); // copy the array
-      //console.log(newVals[this.state.currentCell]);
       newVals[this.state.currentCell-1] = "";
       this.setState({cellVals: newVals, currentCell: this.state.currentCell-1});
     }
@@ -294,19 +285,13 @@ class NameForm extends React.Component {
 function Game() {
   const { login, setLogin } = useLogin(false);
   const [instructions, setInstructions] = useState(false);
-  //const displayUsername = (event) => {
-    //event.preventDefault()
-    //var inputUsername = this.inputNode.value
-    //var text = localStorage.getItem(inputUsername)
-    //console.log(event.target[0].value)
-  //}
   if(!login) {
     return <Login setLogin={setLogin} />
   }
 
   return(
     <div className="game">
-        <NameForm />
+        <div className="userForm"><NameForm /></div>
         <div className="game-board">
            <Board />
            <div className="button-panel">
@@ -326,22 +311,6 @@ function Game() {
           <button onClick={clearAll} className="logout">logout</button>
           <button className="refresh">update leaderboard</button>
         </div>
-         </div>
-
-         <div className="game-leaderboard">
-           <div>{"Leaderboard:"}</div>
-           <ol>
-             <li>Insert #1</li>
-             <li>Insert #2</li>
-             <li>Insert #3</li>
-             <li>Insert #4</li>
-             <li>Insert #5</li>
-             <li>Insert #6</li>
-             <li>Insert #7</li>
-             <li>Insert #8</li>
-             <li>Insert #9</li>
-             <li>Insert #10</li>
-           </ol>
          </div>
        </div>
     
