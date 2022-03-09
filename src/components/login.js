@@ -16,13 +16,11 @@ async function loginUser(credentials) {
  
 function Login({ setLogin }) {
    const [username, setUserName] = useState();
-   const [password, setPassword] = useState();
   
    const handleSubmit = async e => {
        e.preventDefault();
        const token = await loginUser({
          username,
-         password
        });
        setLogin(token);
        if (localStorage.getItem(username) == null) { // if username does not exist
@@ -39,10 +37,6 @@ function Login({ setLogin }) {
                    <label>
                    <p>UID</p>
                    <input type="text" onChange={e => setUserName(e.target.value)}/>
-                   </label>
-                   <label>
-                   <p>Password</p>
-                   <input type="password" onChange={e => setPassword(e.target.value)}/>
                    </label>
                    <div>
                    <p></p>

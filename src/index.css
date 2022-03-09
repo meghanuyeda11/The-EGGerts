@@ -76,19 +76,11 @@ div {
 }
 
 .userForm {
-  position: absolute;
-  top: 30px;
-  right: 70px;
-  padding: 10px;
-  text-align: left;
+  padding-top: 20px;
 }
 
 :focus {
   outline: none !important;
-}
-
-@media all and (max-width: 1200px) {
-  .userForm { display: none; }
 }
 
 .modal-body {
@@ -97,7 +89,7 @@ div {
 }
 
 #overlay {
-  position: fixed;
+  position: fixed;  
   opacity: 0;
   transition: 200ms ease-in-out; 
   top: 0;

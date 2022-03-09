@@ -22,6 +22,7 @@ button{
     width: 100%;
     max-width: 640px;
     background-color: #fff;
+    border-radius: 6px;
 }
 
 .instructions-inner .close-btn {
