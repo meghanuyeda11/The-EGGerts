@@ -244,10 +244,6 @@ function clearAll() {
   alert("You've been logged out! Please refresh the page")
 }
 
-// function sub() {
-// alert("Works")
-// }
-
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -268,12 +264,12 @@ class NameForm extends React.Component {
     if (bestScore != null && bestScore != 0 && bestScore !== undefined) {
       console.log(JSON.stringify(bestScore))
       if (bestScore == -1){
-        alert("Play the game " + username + ", you're better than these trojans")
+        alert("Play the game student #" + username + ", you're better than these trojans")
       } else {
-      alert("Congrats " + username + " your best score is " + bestScore)
+      alert("Congrats student #" + username + " your best score is " + bestScore)
       }
     } else {
-      alert("Who is " + username)
+      alert("You must enter a UID!")
     }
   }
 
@@ -281,7 +277,7 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Username &nbsp; 
+          UID &nbsp; 
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -316,7 +312,6 @@ function Game() {
             </div>
           </Instructions>
           <button onClick={clearAll} className="logout">Logout</button>
-          {/* <button onClick={sub} className="submit">Submit</button> */}
          </div>
          </div>
          <div className="userForm"><NameForm /></div>

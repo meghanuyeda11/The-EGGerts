@@ -37,7 +37,7 @@ function Login({ setLogin }) {
                <h1>Please Log In</h1>
                <form onSubmit={handleSubmit}>
                    <label>
-                   <p>Username</p>
+                   <p>UID</p>
                    <input type="text" onChange={e => setUserName(e.target.value)}/>
                    </label>
                    <label>
