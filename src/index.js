@@ -241,7 +241,7 @@ class Board extends React.Component {
 
 function clearAll() {
   window.sessionStorage.clear();
-  alert("you've been logged out! please refresh the page")
+  alert("You've been logged out! Please refresh the page")
 }
 
 // function sub() {
