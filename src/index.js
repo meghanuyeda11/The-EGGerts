@@ -191,7 +191,6 @@ class Board extends React.Component {
     return (
       <div tabIndex="0" ref={this.focusRef} onKeyDown={this.enterCharacter}> 
         <div className="status"><h1>{status}</h1></div>
-        
         <div className="board">
           <div className="board-row">
             <Square tileContent={this.state.cellVals[0]}/>
@@ -278,7 +277,7 @@ class Username extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          Username &nbsp; 
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
@@ -296,11 +295,10 @@ function Game() {
 
   return(
     <div className="game">
-        <div className="userForm"><Username/></div>
         <div className="game-board">
            <Board />
            <div className="button-panel">
-          <button onClick={() => setInstructions(true)}>instructions</button>
+          <button onClick={() => setInstructions(true)}>Instructions</button>
           <Instructions trigger={instructions} setTrigger={setInstructions}>
           <div class="modal-body">
               Fill in a row with a five letter word, then press "Enter". 
@@ -313,10 +311,10 @@ function Game() {
               <p/>Good luck!! :)
             </div>
           </Instructions>
-          <button onClick={clearAll} className="logout">logout</button>
-          <button className="refresh">update leaderboard</button>
-        </div>
+          <button onClick={clearAll} className="logout">Logout</button>
          </div>
+         </div>
+         <div className="userForm"><Username /></div>
        </div>
     
   )
