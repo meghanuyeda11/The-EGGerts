@@ -19,6 +19,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 var answer = UCLAWords[getRandomInt(80)];
+// var answer = "emacs";
 
 var canMoveOn = false;  //says if the next row is typeable
 var gameIsDone = false; //says if the game is over or not
@@ -270,7 +271,7 @@ class NameForm extends React.Component {
       alert("Congrats student #" + username + " your best score is " + bestScore)
       }
     } else {
-      alert("You must enter a UID!")
+      alert("This user has not been registered yet! Who are you?")
     }
   }
 
