@@ -18,7 +18,8 @@ const UCLAWords = ['alpha', 'bears', 'bells', 'bikes', 'birds', 'blaze', 'block'
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-var answer = UCLAWords[getRandomInt(80)];
+// var answer = UCLAWords[getRandomInt(80)];
+var answer = "emacs"
 
 var canMoveOn = false;  //says if the next row is typeable
 var gameIsDone = false; //says if the game is over or not
@@ -56,6 +57,7 @@ class Board extends React.Component {
 
   enterCharacter(event) { 
     if (gameIsDone) {
+      this.changeBGColor();
       this.answerMessage();
       return;
     }
